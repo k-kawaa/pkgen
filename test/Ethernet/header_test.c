@@ -33,7 +33,7 @@ void Header_Dump(){
 
         memcpy(&(hdr.type),&type,2);
     }
-    buff = GenEtherHdr(&hdr,0);
+    buff = GenEtherHdr(&hdr);
     int a;
     for(a=0;a<14;a++){
         printf(" %02x", buff[a]);

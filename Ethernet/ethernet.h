@@ -19,6 +19,6 @@ typedef struct{
     uint16_t type;
 }ether_hdr;
 
-uint8_t *GenEtherHdr(ether_hdr *hdr,int vlan);
+uint8_t *GenEtherHdr(ether_hdr *hdr);
 
 #endif
