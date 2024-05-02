@@ -4,6 +4,6 @@
 #include <stdlib.h>
 
 
-void *SMalloc(size_t len);
+uint8_t *SMalloc(size_t len);
 
 #endif
