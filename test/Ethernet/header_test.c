@@ -12,9 +12,10 @@
 #include "header_test.h"
 #include "../../Ethernet/ethernet.h"
 
+//srcとdstが同じインチキヘッダーダンププログラム
 void Header_Dump(){
     uint8_t *buff;
-    uint16_t type = 0x0800;
+    uint16_t type = ETHER_TYPE_IPV4;
     ether_hdr hdr;
     struct ifreq s;
 
@@ -37,7 +38,5 @@ void Header_Dump(){
     for(a=0;a<14;a++){
         printf(" %02x", buff[a]);
     }
-
-
 
 }
