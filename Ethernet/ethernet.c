@@ -11,6 +11,11 @@
 uint8_t *GenEtherHdr(ether_hdr *hdr) {
     uint8_t *ptr;
     ptr = malloc(ETHER_HDR_LEN_WITH_NOVLAN);
+
+    if(ptr == NULL){
+        printf("[Memory]can't allocate memory");
+    }
+
     int a;
     for(a=0;a<6;++a){
         ptr[a] = hdr->dst[a];
@@ -23,6 +28,26 @@ uint8_t *GenEtherHdr(ether_hdr *hdr) {
     return ptr;
 }
 
-uint8_t *GenEtherHdrWithVLAN(){
+uint8_t *GenEtherHdrWithVLAN(ether_hdr_v *hdr){
+    uint8_t *ptr;
+    uint16_t tci = 0;
+    ptr = malloc(ETHER_HDR_LEN_WITH_VLAN);
+
+    if(ptr == NULL){
+        printf("[Memory]can't allocate memory");
+        returu NULL;
+    }
+
+    int a;
+    for(a=0;a<6;++a){
+        ptr[a] = hdr->dst[a];
+    }
+    for(a=0;a<6;++a){
+        ptr[a+6] = hdr->src[a];
+    }
     
+    ptr[12] = (uint8_t)((TPID >> 8) & 0xFF);
+    ptr[13] = (uint8_t)((TPID & 0xFF));
+    ptr[16] = (uint8_t)((hdr->type >> 8) & 0xFF);
+    ptr[17] = (uint8_t)(hdr->type & 0xFF);
 }
