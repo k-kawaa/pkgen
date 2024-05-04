@@ -26,7 +26,7 @@ typedef struct{
     uint8_t src[MAC_LEN];
     uint8_t pcp;            //フレーム優先度（3bit）
     uint8_t dei;            //輻輳時設定 0/1（1bit）
-    uint8_t vid;            //VLAN ID（12bit）
+    uint16_t vid;            //VLAN ID（12bit）
     uint16_t type;
 }ether_hdr_v;
 
